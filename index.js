@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import route from './routes/index.js';
+import api from './routes/api.js';
 import cors from 'cors';
 const app = express();
 
@@ -18,6 +18,6 @@ app.use(express.json());
 app.get('/',(req,res)=>{
   res.send('hallo')
 });
-app.use('/account',route);
+app.use('/api',api);
 
 app.listen('3000', () => console.log('Server Running'));
