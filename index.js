@@ -1,10 +1,12 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import api from './routes/api.js';
-import cors from 'cors';
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const api = require('./routes/api');
+const home = require('./routes/home-page');
+const cors = require('cors');
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/strava_db', {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -15,9 +17,7 @@ db.once('open', () => console.log('Database Connected'));
 
 app.use(cors());
 app.use(express.json());
-app.get('/',(req,res)=>{
-  res.send('hallo')
-});
-app.use('/api',api);
+app.get('/', home);
+app.use('/api', api);
 
 app.listen('3000', () => console.log('Server Running'));

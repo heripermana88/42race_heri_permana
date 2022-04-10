@@ -1,46 +1,46 @@
-import Activity from '../models/Activity.js';
+const Activity = require('../models/Activity');
 
-export const getActivities = async (req, res) => {
+exports.getActivities = async (req, res) => {
   try {
-    const accounts = await Activity.find();
-    res.json({ data: accounts });
+    const activities = await Activity.find();
+    res.json({ data: activities });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 }
 
-export const getActivityById = async (req, res) => {
+exports.getActivityById = async (req, res) => {
   try {
-    const product = await Activity.findById(req.params.id);
-    res.json({ data: product });
+    const activity = await Activity.findById(req.params.id);
+    res.json({ data: activity });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 }
 
-export const saveActivity = async (req, res) => {
-  const product = new Activity(req.body);
+exports.saveActivity = async (req, res) => {
+  const activity = new Activity(req.body);
   try {
-    const savedActivity = await product.save();
+    const savedActivity = await activity.save();
     res.status(201).json({ data: savedActivity });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 }
 
-export const deleteActivity = async (req, res) => {
+exports.deleteActivity = async (req, res) => {
   try {
-    const product = await Activity.deleteOne({ _id: req.params.id });
+    const activity = await Activity.deleteOne({ _id: req.params.id });
 
-    if (!product) throw res.json({ message: 'Activity not Found' });
+    if (!activity) throw res.json({ message: 'Activity not Found' });
 
-    res.json({ message: product });
+    res.json({ message: activity });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 }
 
-export const updateActivity = async (req, res) => {
+exports.updateActivity = async (req, res) => {
   const checkId = await Activity.findById({ _id: req.params.id });
   if (!checkId) return res.status(404).json({ message: 'Activity Id not Found' });
   try {

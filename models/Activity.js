@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const Activity = mongoose.Schema({
   resource_state: {
@@ -199,4 +199,4 @@ const Activity = mongoose.Schema({
   }
 })
 
-export default mongoose.model('Activities', Activity);
+module.exports = mongoose.model('Activities', Activity);

@@ -1,0 +1,11 @@
+STRAVA_AUTH = https://www.strava.com/oauth/authorize
+STRAVA_TOKEN = https://www.strava.com/oauth/token
+STRAVA_API = https://www.strava.com/api/v3
+STRAVA_URL = https://www.strava.com
+STRAVA_CLIENT_ID = 80691
+STRAVA_CLIENT_SECRET = 7eadd14c624f9908fd0b1823c31a6e22e4e7a4b9
+STRAVA_ACCESS_TOKEN = f3bf17ae5c93c621aec836a88cefa28bf5cc09a2
+STRAVA_REFRESH_TOKEN = 5280facd0e69c8c297ff0e7e95c3ca2558a419ed
+
+DB_URL = mongodb://localhost:27017/strava_db
+BASE_URL = http://localhost:3000

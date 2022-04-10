@@ -1,6 +1,6 @@
-import Account from '../models/Account.js';
+const Account = require('../models/Account');
 
-export const getAccounts = async (req, res) => {
+exports.getAccounts = async (req, res) => {
   try {
     const accounts = await Account.find();
     res.json({ data: accounts });
@@ -9,40 +9,40 @@ export const getAccounts = async (req, res) => {
   }
 }
 
-export const getAccountById = async (req, res) => {
+exports.getAccountById = async (req, res) => {
   try {
-    const product = await Account.findById(req.params.id);
-    res.json({ data: product });
+    const account = await Account.findById(req.params.id);
+    res.json({ data: account });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 }
 
-export const deleteAccount = async (req, res) => {
+exports.deleteAccount = async (req, res) => {
   try {
-    const product = await Account.deleteOne({_id:req.params.id});
+    const account = await Account.deleteOne({ _id: req.params.id });
 
-    if(!product) throw res.json({ message: 'Account not Found' });
-    
-    res.json({ message: product });
+    if (!account) throw res.json({ message: 'Account not Found' });
+
+    res.json({ message: account });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 }
 
-export const saveAccount = async (req, res) => {
-  const product = new Account(req.body);
+exports.saveAccount = async (req, res) => {
+  const account = new Account(req.body);
   try {
-    const savedAccount = await product.save();
+    const savedAccount = await account.save();
     res.status(201).json({ data: savedAccount });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 }
 
-export const updateAccount = async (req, res) => {
-  const checkId = await Account.findById({_id:req.params.id});
-  if(!checkId) return res.status(404).json({ message: 'Account Id not Found' });
+exports.updateAccount = async (req, res) => {
+  const checkId = await Account.findById({ _id: req.params.id });
+  if (!checkId) return res.status(404).json({ message: 'Account Id not Found' });
   try {
     const updateAccount = await Account.updateOne({ _id: req.params.id }, { $set: req.body });
     res.status(201).json({ data: updateAccount });

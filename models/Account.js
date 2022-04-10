@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose =require('mongoose');
 
 const Account = mongoose.Schema({
   athlete_id: {
@@ -39,7 +39,7 @@ const Account = mongoose.Schema({
   },
   sex: {
     type: String,
-    required: true
+    required: false
   },
   premium: {
     type: Boolean,
@@ -78,4 +78,4 @@ const Account = mongoose.Schema({
   }
 })
 
-export default mongoose.model('Accounts', Account);
+module.exports = mongoose.model('Accounts', Account);
