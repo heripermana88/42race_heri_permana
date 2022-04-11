@@ -1,7 +1,7 @@
 const mongoose =require('mongoose');
 
 const Account = mongoose.Schema({
-  athlete_id: {
+  id: {
     type: Number,
     required: true
   },

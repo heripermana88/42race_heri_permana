@@ -11,6 +11,7 @@ const {
   saveActivity,
   updateActivity,
   getActivityById,
+  getActivityByAthleteId,
   deleteActivity
 } = require('../controllers/activityController');
 const {
@@ -30,6 +31,7 @@ router.delete('/account/:id', deleteAccount);
 
 router.get('/activity', getActivities);
 router.get('/activity/:id', getActivityById);
+router.get('/activity/athlete/:id', getActivityByAthleteId);
 router.post('/activity', saveActivity);
 router.patch('/activity/:id', updateActivity);
 router.delete('/activity/:id', deleteActivity);
@@ -37,6 +39,6 @@ router.delete('/activity/:id', deleteActivity);
 router.get('/get-connect', getConnection);
 router.get('/dis-connect', disConnection);
 router.get('/logged-in-athlete', getLoggedInAthlete);
-router.get('/sync-activities', syncActivities);
+router.get('/sync-activities', syncActivities); 
 
 module.exports = router;

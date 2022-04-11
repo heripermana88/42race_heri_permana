@@ -16,9 +16,10 @@ const db = mongoose.connection;
 db.on('error', (error) => console.log(error));
 db.once('open', () => console.log('Database Connected'));
 
+app.set('view engine', 'ejs');
 app.use(cors());
 app.use(express.json());
-app.get('/', home);
+app.use('/', home);
 app.use('/api', api);
 
 app.listen(PORT, () => console.log('Server Running'));

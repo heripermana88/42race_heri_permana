@@ -38,7 +38,7 @@ const Activity = mongoose.Schema({
     required: false,
     default: null
   },
-  ativity_id: {
+  id: {
     type: Number,
     required: true
   },
