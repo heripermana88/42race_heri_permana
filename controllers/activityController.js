@@ -11,7 +11,7 @@ exports.getActivities = async (req, res) => {
 
 exports.getActivityById = async (req, res) => {
   try {
-    const activity = await Activity.findById(req.params.id);
+    const activity = await Activity.findOne({ativity_id:req.params.id});
     res.json({ data: activity });
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -11,7 +11,7 @@ exports.getAccounts = async (req, res) => {
 
 exports.getAccountById = async (req, res) => {
   try {
-    const account = await Account.findById(req.params.id);
+    const account = await Account.findOne({ athlete_id: req.params.id });
     res.json({ data: account });
   } catch (error) {
     res.status(500).json({ message: error.message });

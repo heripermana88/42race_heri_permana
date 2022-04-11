@@ -37,6 +37,9 @@ exports.getLoggedInAthlete = async (req, res) => {
 
 exports.syncActivities = async (req, res) => {
   const stravaProcessor = new StravaProcessorAdapter();
-  const activities = await stravaProcessor.activities('LIST_ACTIVITIES', req.query.access_token, {});
-  res.json(activities.body);
+  const getActivities = await stravaProcessor.activities('LIST_ACTIVITIES', req.query.access_token, {});
+  if(getActivities.status!=200) return res.status(400).json({ message: 'Strava Down' });
+
+  const activities = activities.body;
+  // fillter here before store
 }
