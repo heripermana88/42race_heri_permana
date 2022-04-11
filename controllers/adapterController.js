@@ -8,7 +8,12 @@ exports.getConnection = async (req, res) => {
 }
 
 exports.disConnection = async (req, res) => {
+  const stravaProcessor = new StravaProcessorAdapter();
+  const getStravaAthlete = await stravaProcessor.auth('DEAUTHORIZE', req.query.access_token, {});
 
+  // if (getStravaAthlete.status != 200) return res.status(400).json({ message: 'Strava Down' });
+
+  res.status(200).json(getStravaAthlete);
 }
 
 exports.getLoggedInAthlete = async (req, res) => {
