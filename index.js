@@ -5,9 +5,9 @@ const api = require('./routes/api');
 const home = require('./routes/home-page');
 const cors = require('cors');
 const app = express();
-const port = process.env.PORT || 3000;
+const { PORT, mongoUri } = require('./config');
 
-mongoose.connect(process.env.DB_URL, {
+mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -21,4 +21,4 @@ app.use(express.json());
 app.get('/', home);
 app.use('/api', api);
 
-app.listen(port, () => console.log('Server Running'));
+app.listen(PORT, () => console.log('Server Running'));
